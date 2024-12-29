@@ -1,0 +1,89 @@
+Q3)R Programming
+[Wine Quality Dataset]
+
+1) Load the dataset and perfrom a summary of the data in RStudio
+2) Create a box plot for pH and alcohol columns to compare the Distribution of these features for wines with
+different quality ratings. in RStudio
+wine_data <- read.csv("C:/Users/hp/Downloads/wine-dataset/winequality-red.csv")
+colnames(wine_data)
+summary(wine_data)
+
+library(ggplot2)
+ggplot(wine_data, aes(x = factor(quality), y = pH)) +
+  geom_boxplot() +
+  labs(title = "Box Plot of pH by Wine Quality", x = "Wine Quality", y = "pH")
+
+ggplot(wine_data, aes(x = factor(quality), y = alcohol)) +
+  geom_boxplot() +
+  labs(title = "Box Plot of Alcohol by Wine Quality", x = "Wine Quality", y = "Alcohol")
+
+
+
+
+Q1)Write a python program to implement a queue data structure using only lists and without using any external
+libraries. your stack have the following functionlities:
+stack have the following functionlities:
+        _enqueue(): Add an element to the queue
+        _dequeue(): Remove an elemet from the queue
+        _is_empty():  Check if the queue is empty
+        _size():Check the size of the queue.
+
+class Queue:
+    def __init__(self):
+        # Initialize an empty list to represent the queue
+        self.queue = []
+
+    # Method to add an element to the queue
+    def _enqueue(self, item):
+        self.queue.append(item)
+        print(f"Enqueued: {item}")
+
+    # Method to remove an element from the queue
+    def _dequeue(self):
+        if self._is_empty():
+            return "Queue is empty"
+        removed_item = self.queue.pop(0)
+        print(f"Dequeued: {removed_item}")
+        return removed_item
+
+    # Method to check if the queue is empty
+    def _is_empty(self):
+        return len(self.queue) == 0
+
+    # Method to get the size of the queue
+    def _size(self):
+        return len(self.queue)
+
+# Example usage of the Queue class
+q = Queue()
+q._enqueue(10)  # Enqueue 10
+q._enqueue(20)  # Enqueue 20
+q._enqueue(30)  # Enqueue 30
+
+print(f"Queue size: {q._size()}")  # Check the size of the queue
+
+q._dequeue()  # Dequeue an element
+print(f"Queue size after dequeue: {q._size()}")  # Check size after dequeue
+
+print(f"Is the queue empty? {q._is_empty()}")  # Check if the queue is empty
+
+
+Q2)Write a Python Program to calculate the factorial of a given number using recursion
+# Function to calculate factorial using recursion
+def factorial(n):
+    # Base case: if n is 0 or 1, return 1
+    if n == 0 or n == 1:
+        return 1
+    # Recursive case: n * factorial of (n-1)
+    else:
+        return n * factorial(n - 1)
+
+# Input: Ask the user for a number
+num = int(input("Enter a number to find its factorial: "))
+
+# Ensure the number is non-negative
+if num < 0:
+    print("Factorial is not defined for negative numbers.")
+else:
+    # Output: Calculate and print the factorial
+    print(f"Factorial of {num} is: {factorial(num)}")
