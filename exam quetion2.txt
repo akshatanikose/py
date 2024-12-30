@@ -1,0 +1,101 @@
+Q(3)#Load the dataset and perform a summary of data including mean,median,&std for all numeric column
+#Create a scatter plot to visualize the relationship between Sepal.length and Petal.length for different species in the dataset
+data("iris")
+
+
+# Perform a summary of the dataset, including mean, median, and std for all numeric columns
+summary(iris)
+
+# For a more detailed summary with mean, median, and standard deviation
+numeric_columns <- sapply(iris, is.numeric)  # Get numeric columns
+numeric_data <- iris[, numeric_columns]  # Subset numeric data
+summary(numeric_data)  # Summary statistics including mean, median, and std dev
+
+# Load ggplot2 for plotting
+library(ggplot2)
+
+# Create a scatter plot to visualize the relationship between Sepal.Length and Petal.Length for different species
+ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
+  geom_point() +
+  labs(title = "Scatter Plot of Sepal Length vs Petal Length", 
+       x = "Sepal Length", 
+       y = "Petal Length") +
+  theme_minimal()
+
+Question (2)
+Write a Python program to print the fibonacci series using recursion
+# Function to print Fibonacci series using recursion
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+# Input the number of terms
+num_terms = int(input("Enter the number of terms in Fibonacci series: "))
+
+# Print Fibonacci series
+print("Fibonacci Series:")
+for i in range(num_terms):
+    print(fibonacci(i), end=" ")
+
+
+Question (1)
+Write a Python program to implement a stack data structure using only lists without using any libraries.
+Your stack should have the following functionalities:
+- push(): Add an element to stack
+- pop(): Remove an element from the stack
+- peek(): return the top element of the stack without removing it.
+- is_empty(): check if the stack is empty
+# Stack class implementation using lists
+class Stack:
+    def __init__(self):
+        # Initialize an empty list to represent the stack
+        self.stack = []
+
+    # Method to add an element to the stack
+    def push(self, item):
+        self.stack.append(item)
+        print(f"Pushed: {item}")
+
+    # Method to remove an element from the stack
+    def pop(self):
+        if self.is_empty():
+            return "Stack is empty"
+        popped_item = self.stack.pop()
+        print(f"Popped: {popped_item}")
+        return popped_item
+
+    # Method to return the top element without removing it
+    def peek(self):
+        if self.is_empty():
+            return "Stack is empty"
+        return self.stack[-1]
+
+    # Method to check if the stack is empty
+    def is_empty(self):
+        return len(self.stack) == 0
+
+# Example usage
+stack = Stack()
+
+# Push some elements onto the stack
+stack.push(10)
+stack.push(20)
+stack.push(30)
+
+# Peek at the top element
+print(f"Top element: {stack.peek()}")
+
+# Pop an element from the stack
+stack.pop()
+
+# Check if the stack is empty
+print(f"Is stack empty? {stack.is_empty()}")
+
+# Pop all remaining elements
+stack.pop()
+stack.pop()
+
+# Check if the stack is empty now
+print(f"Is stack empty now? {stack.is_empty()}")
